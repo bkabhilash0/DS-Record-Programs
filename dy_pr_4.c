@@ -14,9 +14,9 @@ void read(struct Book *books, int n)
     {
         printf("Enter the Details of Book %d\n", i + 1);
         printf("Enter the Author Name: ");
-        scanf("%s", &(books + 1)->author_name);
+        scanf("%s", (books + i)->author_name);
         printf("Enter the Book Name: ");
-        scanf("%s", &(books + 1)->book_name);
+        scanf("%s", (books + i)->book_name);
     }
 }
 

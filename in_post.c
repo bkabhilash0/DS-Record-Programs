@@ -79,10 +79,12 @@ void popAll(int *stack,int *top){
 
 void main(){
 	int *stack,size,top=-1;
-	char expression[20] = "(2+3*(3-2))+8";
+	char expression[20];
+	printf("Enter the String: \n");
+	scanf("%s",expression);
 	size = strlen(expression);
 	stack = (int*)calloc(size,sizeof(int));
-	printf("%s\n",expression);
+	printf("The Expression Given is: %s\n",expression);
 	
 	int i=0;
 	for(i=0;i<size;i++){
@@ -103,4 +105,5 @@ void main(){
 		popAll(stack,&top);
 	}
 	
+	free(stack);
 }
