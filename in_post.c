@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 void display(int *stack,int top);
 
@@ -79,9 +80,9 @@ void popAll(int *stack,int *top){
 
 void main(){
 	int *stack,size,top=-1;
-	char expression[20];
-	printf("Enter the String: \n");
-	scanf("%s",expression);
+	char expression[20] = "1+2*3+4";;
+	// printf("Enter the String: \n");
+	// scanf("%s",expression);
 	size = strlen(expression);
 	stack = (int*)calloc(size,sizeof(int));
 	printf("The Expression Given is: %s\n",expression);
