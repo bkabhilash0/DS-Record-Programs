@@ -29,7 +29,7 @@ void push(Struct *S,char ch){
 }
 
 void peek(Struct *S){
-    printf("The element at the top is %c\n",S->data[S->top]);
+    printf("%c",S->data[S->top]);
 }
 
 void main(){
