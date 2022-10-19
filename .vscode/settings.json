@@ -2,6 +2,10 @@
     "files.associations": {
         "*.jsx": "javascriptreact",
         "*.c": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "vector": "c",
+        "__bit_reference": "c",
+        "__split_buffer": "c",
+        "string": "c"
     }
 }
