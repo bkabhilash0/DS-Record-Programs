@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.jsx": "javascriptreact",
+        "*.c": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c",
+        "ranges": "c",
+        "vector": "c"
+    }
+}
