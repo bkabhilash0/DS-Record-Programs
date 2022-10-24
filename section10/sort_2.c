@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void bubbleSort(int *a, int n)
+int *a;
+int n, i;
+
+void bubbleSort()
 {
     int i, j, t;
     for (i = 0; i < n - 1; i++)
@@ -18,7 +21,7 @@ void bubbleSort(int *a, int n)
     }
 }
 
-void selectionSort(int *a, int n)
+void selectionSort()
 {
     int i, j, t;
     for (i = 0; i < n - 1; i++)
@@ -35,7 +38,7 @@ void selectionSort(int *a, int n)
     }
 }
 
-void insertionSort(int *a, int n)
+void insertionSort()
 {
     int i, j, k;
     for (i = 1; i < n; i++)
@@ -47,11 +50,11 @@ void insertionSort(int *a, int n)
             a[j + 1] = a[j];
             j--;
         }
-        a[j + 1] = k;    
+        a[j + 1] = k;
     }
 }
 
-void display(int *a, int n)
+void display()
 {
     int i;
     printf("[");
@@ -62,21 +65,48 @@ void display(int *a, int n)
     printf("]\n");
 }
 
+int menu()
+{
+    int ch;
+    printf("Sorting Algorithms...\n");
+    printf("1. Bullble Sort\n2. Selection Sort\n3. Insertion Sort\n4. Exit\n");
+    printf("Enter your choice...\n");
+    scanf("%d", &ch);
+    switch (ch)
+    {
+    case 1:
+        bubbleSort();
+        break;
+    case 2:
+        selectionSort();
+        break;
+    case 3:
+        insertionSort();
+        break;
+    case 4:
+        printf("Exiting...\n");
+        return 0;
+    default:
+        printf("Enter a Valid choice...\n");
+    }
+}
+
 void main()
 {
-    int a[5] = {3, 2, 7, 5, 1}, n, i;
-    n = 5;
-    // printf("Enter the size of the array: ");
-    // scanf("%d", &n);
-    // a = (int*)malloc(n * sizeof(int));
-    // printf("Enter the Array Elements\n");
-    // for (i = 0; i < n; i++)
-    // {
-    //     printf("Enter the Element %d: ", i + 1);
-    //     scanf("%d", &a[i]);
-    // }
-    display(a, n);
-    // selectionSort(a, n);
-    insertionSort(a, n);
-    display(a, n);
+    // int a[5] = {3, 2, 7, 5, 1}, n, i;
+    // n = 5;
+
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+    a = (int *)malloc(n * sizeof(int));
+    printf("Enter the Array Elements\n");
+    for (i = 0; i < n; i++)
+    {
+        printf("Enter the Element %d: ", i + 1);
+        scanf("%d", &a[i]);
+    }
+    display();
+    while(menu()){
+        display();
+    };
 }

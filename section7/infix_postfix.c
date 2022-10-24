@@ -115,6 +115,7 @@ void displayStack(Stack stack)
 void main()
 {
     char str[] = "(A+B/C*(D+E)-F)";
+    printf("Infix Form is %s\n", str);
     Stack myStack = {.top = -1};
     myStack.capacity = strlen(str);
     myStack.data = (char *)malloc(strlen(str) * sizeof(char));

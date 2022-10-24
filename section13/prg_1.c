@@ -50,7 +50,7 @@ void displayList(Node *node)
     do
     {
         printf("----------\n");
-        printf("| %d | Addr |\n", t->data);
+        printf("| %d |\n", t->data);
         t = t->next;
         printf("----------\n");
     } while (t != node);
