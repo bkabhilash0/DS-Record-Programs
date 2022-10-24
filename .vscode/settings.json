@@ -6,6 +6,9 @@
         "vector": "c",
         "__bit_reference": "c",
         "__split_buffer": "c",
-        "string": "c"
+        "string": "c",
+        "array": "c",
+        "string_view": "c",
+        "ranges": "c"
     }
 }

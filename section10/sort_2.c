@@ -69,7 +69,7 @@ int menu()
 {
     int ch;
     printf("Sorting Algorithms...\n");
-    printf("1. Bullble Sort\n2. Selection Sort\n3. Insertion Sort\n4. Exit\n");
+    printf("1. Bubble Sort\n2. Selection Sort\n3. Insertion Sort\n4. Exit\n");
     printf("Enter your choice...\n");
     scanf("%d", &ch);
     switch (ch)

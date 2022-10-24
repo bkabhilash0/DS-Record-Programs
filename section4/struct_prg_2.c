@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
-#define SIZE 3
+// #define SIZE 2
 
 struct Employee
 {
@@ -45,15 +46,15 @@ void displayAll(struct Employee *users, int n)
     printf("-------------------------------------------------------------\n");
     for (i = 0; i < n; i++)
     {
-        printf("%d\t", users[i].eno);
-        printf("%s\t", users[i].ename);
-        printf("%d\t", users[i].esal);
-        printf("%d\t", users[i].dno);
+        printf("%d\t\t", users[i].eno);
+        printf("%s\t\t", users[i].ename);
+        printf("%d\t\t", users[i].esal);
+        printf("%d\t\t", users[i].dno);
         printf("\n");
     }
 }
 
-int search(struct Employee data[], int n, int eno)
+int search(struct Employee *data, int n, int eno)
 {
     int i, index = -1;
     for (i = 0; i < n; i++)
@@ -112,26 +113,31 @@ void sortBySalary(struct Employee *data, int n)
     }
 }
 
-void deleteById(struct Employee *data, int n, int eno)
+void deleteById(struct Employee *data, int *n, int eno)
 {
     int i, index = -1;
     struct Employee tmp;
-    index = search(data, n, eno);
+    index = search(data, *n, eno);
     if (index == -1)
     {
         return;
     }
-    for (i = index; i < n - 1; i++)
+    for (i = index; i < *n - 1; i++)
     {
         data[i] = data[i + 1];
+        *n = *n - 1;
     }
+    displayAll(data,*n);
     printf("Deleted the Employee with the ID %d\n", eno);
 }
 
 void main()
 {
-    int n, i;
-    struct Employee users[SIZE];
+    int n, i,SIZE;
+    printf("Enter the number of employees: ");
+    scanf("%d", &SIZE);
+    struct Employee *users;
+    users = (struct Employee *)malloc(SIZE * sizeof(struct Employee));
 
     printf("Enter the Employees: \n");
     read(users, SIZE);
@@ -161,19 +167,19 @@ void main()
             break;
         case 2:
             printf("Sorting By Name:\n");
-            sortByName(&users, SIZE);
+            sortByName(users, SIZE);
             break;
         case 3:
             printf("Sorting By Salary\n");
-            sortBySalary(&users, SIZE);
+            sortBySalary(users, SIZE);
             break;
         case 4:
             printf("Enter an Employee Id to Delete: \n");
             scanf("%d", &eid);
-            deleteById(&users, SIZE, eid);
+            deleteById(users, &SIZE, eid);
             break;
         case 5:
-            displayAll(&users, SIZE);
+            displayAll(users, SIZE);
             break;
         case 6:
             printf("Exiting....");
@@ -183,4 +189,5 @@ void main()
             printf("Enter a Valid Choice!\n");
         }
     }
+    free(users);
 }

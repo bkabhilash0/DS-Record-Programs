@@ -3,27 +3,23 @@
 
 // Binary Search
 
-void binarySearch(int *a, int start, int end, int key)
+int binarySearch(int arr[], int l, int r, int x)
 {
-    int mid = (start + end) / 2;
-    if (start > end)
+    if (r >= l)
     {
-        printf("Element Not Found!\n");
-        return;
+        int mid = l + (r - l) / 2;
+        // If the element is present at the middle itself
+        if (arr[mid] == x)
+            return mid;
+        // If element is smaller than mid, then it can only be present
+        // in left subarray
+        if (arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
+        // Else the element can only be present in right subarray
+        return binarySearch(arr, mid + 1, r, x);
     }
-    if (a[mid] == key)
-    {
-        printf("Element Found at index %d\n", mid);
-        return;
-    }
-    if (a[mid] > key)
-    {
-        binarySearch(a, start, mid - 1, key);
-    }
-    else
-    {
-        binarySearch(a, mid + 1, end, key);
-    }
+    // We reach here when element is not present in array
+    return -1;
 }
 
 void sort(int *a, int n)
@@ -56,7 +52,7 @@ void display(int *a, int n)
 
 void main()
 {
-    int *a, n, i,k;
+    int *a, n, i, k;
     printf("Enter the size of the Array: ");
     scanf("%d", &n);
     a = (int *)malloc(n * sizeof(int));
@@ -69,6 +65,8 @@ void main()
     sort(a, n);
     display(a, n);
     printf("Enter the Element to be Searched: ");
-    scanf("%d",&k);
-    binarySearch(a, 0, n, 5);
+    scanf("%d", &k);
+    int index = binarySearch(a, 0, n - 1, k);
+    (index == -1) ? printf("Element is not present in array")
+                  : printf("Element is present at index %d\n", index);
 }

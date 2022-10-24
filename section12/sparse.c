@@ -47,6 +47,15 @@ void main()
 
     int i, j;
 
+    printf("The Matrix is\n");
+    for(i=0; i<5;i++){
+        for(j= 0; j < 5; j++){
+            printf("%d\t",arr[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("************************** \n");
     Node *node = NULL;
 
     for (i = 0; i < 5; i++)

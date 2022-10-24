@@ -71,13 +71,63 @@ void joinList(Node *head, Node *tail, Node **list)
         new_nodes->next = tail;
         printf("Last Node is %d\n", new_nodes->data);
         displayList(&new_nodes);
-        
+
         // *list = new_nodes;
     }
 }
 
-void sortList(){
-    
+Node *SortedMerge(Node *a, Node *b)
+{
+    Node *result = NULL;
+
+    /* Base cases */
+    if (a == NULL)
+        return (b);
+    else if (b == NULL)
+        return (a);
+
+    /* Pick either a or b, and recur */
+    if (a->data <= b->data)
+    {
+        result = a;
+        result->next = SortedMerge(a->next, b);
+    }
+    else
+    {
+        result = b;
+        result->next = SortedMerge(a, b->next);
+    }
+    return (result);
+}
+
+Node *sortList(Node *list)
+{
+    if (list == NULL)
+    {
+        printf("List is Empty\n");
+        printf("Merge Both the List First!!\n");
+        return NULL;
+    }
+    Node *i = list;
+    Node *j = NULL;
+    int temp;
+
+    while (i != NULL)
+    {
+        j = i->next;
+        while (j != NULL)
+        {
+            if (j->data < i->data)
+            {
+                temp = j->data;
+                j->data = i->data;
+                i->data = temp;
+            }
+            j = j->next;
+        }
+        i = i->next;
+    }
+    return list;
 }
 
 int menu(Node **list1, Node **list2, Node **list3)
@@ -89,7 +139,8 @@ int menu(Node **list1, Node **list2, Node **list3)
     printf("3. Display Element in List 1\n");
     printf("4. Display Element in List 2\n");
     printf("5. Coimbine Both the Lists\n");
-    printf("6. Display Combined Lists\n");
+    printf("6. Sort the Combined List\n");
+    printf("7. Display Combined Lists\n");
     printf("0. Exit\n");
     printf("\n*******************************\n\n");
     printf("Enter your Choice: ");
@@ -112,9 +163,14 @@ int menu(Node **list1, Node **list2, Node **list3)
         break;
     case 5:
         printf("Combining Two Lists...\n");
-        joinList((*list1), (*list2), list3);
+        *list3 = SortedMerge(*list1, *list2);
+        // joinList((*list1), (*list2), list3);
         break;
     case 6:
+        printf("Sorting Combined List....\n");
+        *list3 = sortList(*list3);
+        break;
+    case 7:
         printf("Combined List is \n");
         displayList(list3);
         break;
