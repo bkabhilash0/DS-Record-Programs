@@ -149,13 +149,23 @@ void main()
     int matrix_1[SIZE][SIZE] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     int matrix_2[SIZE][SIZE] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
+    printf("The Matrices are\n");
+    display(matrix_1);
+    printf("-------------------\n");
+    display(matrix_2);
+
+    printf("Addition\n");
     add(matrix_1, matrix_2);
     printf("-------------------\n");
+    printf("Subtraction\n");
     subtract(matrix_1, matrix_2);
     printf("-------------------\n");
+    printf("Multiplication\n");
     multiplication(matrix_1, matrix_2);
     printf("-------------------\n");
+    printf("Transpose\n");
     transpose(matrix_1);
     printf("-------------------\n");
+    printf("Determinant is ");
     printf("%d",determinantOfMatrix(matrix_1,SIZE));
 }

@@ -13,7 +13,7 @@ typedef struct stack
 Struct myStruct = {.top = -1, .capacity = 5};
 Struct *S = &myStruct;
 
-void peek(Struct S);
+void peek();
 
 void push()
 {

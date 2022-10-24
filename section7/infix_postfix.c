@@ -133,4 +133,5 @@ void main()
 
         // displayStack(myStack);
     }
+    printf("\n");
 }

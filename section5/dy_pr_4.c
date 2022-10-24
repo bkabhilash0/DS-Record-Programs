@@ -14,9 +14,12 @@ void read(struct Book *books, int n)
     {
         printf("Enter the Details of Book %d\n", i + 1);
         printf("Enter the Author Name: ");
-        scanf("%s", (books + i)->author_name);
+        getc(stdin);
+        fgets((books + i)->author_name, 100, stdin);
+        // scanf("%s", (books + i)->author_name);
         printf("Enter the Book Name: ");
-        scanf("%s", (books + i)->book_name);
+        fgets((books + i)->book_name, 100, stdin);
+        // scanf("%s", (books + i)->book_name);
     }
 }
 
@@ -26,8 +29,8 @@ void display(struct Book *books, int n)
     for (i = 0; i < n; i++)
     {
         printf("Author %d\n", i + 1);
-        printf("Book Name: %s\n", (books + i)->book_name);
-        printf("Author Name: %s\n", (books + i)->author_name);
+        printf("Book Name: %s", (books + i)->book_name);
+        printf("Author Name: %s", (books + i)->author_name);
         printf("---------------------------------------------\n");
     }
 }

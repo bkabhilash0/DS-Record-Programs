@@ -55,8 +55,12 @@ void searchOccurances(int *arr, int n)
     int i, c = 0;
     int prev = arr[0];
 
-    for (i = 0; i < n; i++)
-    {
+    for (i = 0; i <= n ; i++)
+    {  
+        if(i == n){
+            printf("The element %d is repeated %d times\n", prev, c);
+            break;
+        }
         if (arr[i] == prev)
         {
             c++;

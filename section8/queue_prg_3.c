@@ -1,9 +1,9 @@
 #include <stdio.h>
 #define N 5
 
-int queue[N], front, rear;
-front = -1;
-rear = -1;
+int queue[N];
+int front = -1;
+int rear = -1;
 
 void enqueueRear(int ele)
 {
@@ -13,7 +13,7 @@ void enqueueRear(int ele)
     }
     else
     {
-        printf("Enqueuing %d\n", ele);
+        printf("Enqueuing Rear %d\n", ele);
         if (front == -1)
         {
             front = 0;
@@ -27,11 +27,11 @@ void enqueueFront(int ele)
 {
     if (rear == N - 1)
     {
-        pritnf("Queue is Full\n");
+        printf("Queue is Full\n");
     }
     else
     {
-        printf("Enqueuing %d\n", ele);
+        printf("Enqueuing Front %d\n", ele);
         if (front == -1)
         {
             front = 0;
@@ -49,11 +49,11 @@ void dequeueFront()
 {
     if (front == -1)
     {
-        pritnf("Queue is Empty\n");
+        printf("Queue is Empty\n");
     }
     else
     {
-        printf("Dequeing %d\n", queue[front]);
+        printf("Dequeing from Front %d\n", queue[front]);
         int i;
         for (i = 0; i < rear; i++)
         {
@@ -71,11 +71,11 @@ void dequeueRear()
 {
     if (front == -1)
     {
-        pritnf("Queue is Empty\n");
+        printf("Queue is Empty\n");
     }
     else
     {
-        printf("Dequeing %d\n", queue[rear]);
+        printf("Dequeing front Rear %d\n", queue[rear]);
         rear = rear - 1;
         if (rear == -1)
         {
@@ -84,6 +84,15 @@ void dequeueRear()
     }
 }
 
-void main(){
-    
+void main()
+{
+    enqueueFront(10);
+    enqueueFront(20);
+    enqueueFront(30);
+    enqueueRear(50);
+    enqueueRear(30);
+
+    dequeueFront();
+    dequeueFront();
+    dequeueRear();
 }

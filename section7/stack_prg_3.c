@@ -34,6 +34,7 @@ void peek(Struct *S){
 
 void main(){
     char str[30] = "EAS*YQUE***ST***IO*N***",ch;
+    printf("%s\n",str);
     int l,i;
     Struct S = {.top = -1};
     // printf("Enter a String: ");
@@ -54,5 +55,6 @@ void main(){
             push(&S,ch);
         }
     }
+    printf("\n");
     free(S.data);
 }

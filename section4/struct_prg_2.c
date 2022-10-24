@@ -135,5 +135,52 @@ void main()
 
     printf("Enter the Employees: \n");
     read(users, SIZE);
-    displayAll(users,SIZE);
+    displayAll(users, SIZE);
+
+    int isRunning = 1;
+
+    while (isRunning)
+    {
+        int ch;
+        printf("1. Search an Employee by No:\n");
+        printf("2. Sort by Name:\n");
+        printf("3. Sort by Salary:\n");
+        printf("4. Delete an Employee by Id\n");
+        printf("5. Display All Employees\n");
+        printf("6. Exit\n");
+        printf("Enter your Choice: ");
+        scanf("%d", &ch);
+        int eid;
+
+        switch (ch)
+        {
+        case 1:
+            printf("Enter the Employee ID: ");
+            scanf("%d", &eid);
+            search(users, SIZE, eid);
+            break;
+        case 2:
+            printf("Sorting By Name:\n");
+            sortByName(&users, SIZE);
+            break;
+        case 3:
+            printf("Sorting By Salary\n");
+            sortBySalary(&users, SIZE);
+            break;
+        case 4:
+            printf("Enter an Employee Id to Delete: \n");
+            scanf("%d", &eid);
+            deleteById(&users, SIZE, eid);
+            break;
+        case 5:
+            displayAll(&users, SIZE);
+            break;
+        case 6:
+            printf("Exiting....");
+            isRunning = 0;
+            break;
+        default:
+            printf("Enter a Valid Choice!\n");
+        }
+    }
 }
