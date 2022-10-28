@@ -3,7 +3,7 @@
 #define SIZE 5
 
 int pointer = -1;
-int n = 5;
+int extern_variable = 5;
 int *arr;
 
 int getChoice(){
@@ -25,10 +25,10 @@ void insertElements(){
 	int i;
 	if(pointer == -1){
 		printf("Enter the Limit of the Array: ");
-		scanf("%d",&n);
-		arr = (int*)calloc(n,sizeof(int));
+		scanf("%d",&extern_variable);
+		arr = (int*)calloc(extern_variable,sizeof(int));
 	}
-	for(i = 0;i < n;i++){
+	for(i = 0;i < extern_variable;i++){
 		printf("Enter the %d Element ",i+1);
 		scanf("%d",&arr[pointer+1]);
 		pointer++;	
@@ -42,7 +42,7 @@ void search(){
 	scanf("%d",&key);
 	int i = 0;
 	_Bool isFound = 0;
-	for(i = 0;i < n;i++){
+	for(i = 0;i < extern_variable;i++){
 		printf("Search => %d\n",arr[i]);
 		if(arr[i] == key){
 			isFound = 1;
@@ -64,7 +64,7 @@ void deleteIndex(){
 	if(index < 0 || index > pointer){
 		printf("Out of Bound - Enter a Value in the range!\n");
 	}else{
-		for(i = index + 1;i < n;i++){
+		for(i = index + 1;i < extern_variable;i++){
 			arr[i - 1] = arr[i];
 		}
 		pointer--;
@@ -90,7 +90,7 @@ void main(){
 		printf("Array Strength => %d out of %d\n",pointer+1,SIZE);
 		switch(ch){
 			case 1: {
-				if(pointer == (n - 1)){
+				if(pointer == (extern_variable - 1)){
 					int c,new_size;
 					printf("Array is Full!\n");
 					printf("Do you want to add More Elements ?");
@@ -100,7 +100,7 @@ void main(){
 					if(c == 1){
 						printf("Enter the size to extend:");
 						scanf("%d",&new_size);
-						realloc(arr,n+new_size);
+						realloc(arr,extern_variable+new_size);
 					}
 					
 				}else{

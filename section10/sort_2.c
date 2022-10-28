@@ -2,14 +2,14 @@
 #include <stdlib.h>
 
 int *a;
-int n, i;
+int extern_variable, i;
 
 void bubbleSort()
 {
     int i, j, t;
-    for (i = 0; i < n - 1; i++)
+    for (i = 0; i < extern_variable - 1; i++)
     {
-        for (j = 0; j < n - 1 - i; j++)
+        for (j = 0; j < extern_variable - 1 - i; j++)
         {
             if (a[j] > a[j + 1])
             {
@@ -24,9 +24,9 @@ void bubbleSort()
 void selectionSort()
 {
     int i, j, t;
-    for (i = 0; i < n - 1; i++)
+    for (i = 0; i < extern_variable - 1; i++)
     {
-        for (j = i + 1; j < n; j++)
+        for (j = i + 1; j < extern_variable; j++)
         {
             if (a[j] < a[i])
             {
@@ -41,7 +41,7 @@ void selectionSort()
 void insertionSort()
 {
     int i, j, k;
-    for (i = 1; i < n; i++)
+    for (i = 1; i < extern_variable; i++)
     {
         k = a[i];
         j = i - 1;
@@ -58,7 +58,7 @@ void display()
 {
     int i;
     printf("[");
-    for (i = 0; i < n; i++)
+    for (i = 0; i < extern_variable; i++)
     {
         printf("%d, ", a[i]);
     }
@@ -97,10 +97,10 @@ void main()
     // n = 5;
 
     printf("Enter the size of the array: ");
-    scanf("%d", &n);
-    a = (int *)malloc(n * sizeof(int));
+    scanf("%d", &extern_variable);
+    a = (int *)malloc(extern_variable * sizeof(int));
     printf("Enter the Array Elements\n");
-    for (i = 0; i < n; i++)
+    for (i = 0; i < extern_variable; i++)
     {
         printf("Enter the Element %d: ", i + 1);
         scanf("%d", &a[i]);
