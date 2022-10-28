@@ -9,11 +9,8 @@ typedef struct node
     struct node *next;
 } Node;
 
-void insert_node(Node **head)
+void insert_node(Node **head, int data)
 {
-    int data;
-    printf("Enter the Element to be Inserted: ");
-    scanf("%d", &data);
     Node *t;
     Node *new_node = (Node *)malloc(sizeof(Node));
     new_node->data = data;
@@ -76,28 +73,34 @@ void joinList(Node *head, Node *tail, Node **list)
     }
 }
 
-Node *SortedMerge(Node *a, Node *b)
+Node *combine(Node *a, Node *b)
 {
-    Node *result = NULL;
-
-    /* Base cases */
     if (a == NULL)
-        return (b);
-    else if (b == NULL)
-        return (a);
-
-    /* Pick either a or b, and recur */
-    if (a->data <= b->data)
     {
-        result = a;
-        result->next = SortedMerge(a->next, b);
+        return b;
+    }
+    else if (b == NULL)
+    {
+        return a;
     }
     else
     {
-        result = b;
-        result->next = SortedMerge(a, b->next);
+        Node *c = NULL;
+        Node *t = a;
+        while (t != NULL)
+        {
+            insert_node(&c, t->data);
+            t = t->next;
+        }
+
+        t = b;
+        while (t != NULL)
+        {
+            insert_node(&c, t->data);
+            t = t->next;
+        }
+        return c;
     }
-    return (result);
 }
 
 Node *sortList(Node *list)
@@ -145,13 +148,18 @@ int menu(Node **list1, Node **list2, Node **list3)
     printf("\n*******************************\n\n");
     printf("Enter your Choice: ");
     scanf("%d", &ch);
+    int data;
     switch (ch)
     {
     case 1:
-        insert_node(list1);
+        printf("Enter the Element to be Inserted: ");
+        scanf("%d", &data);
+        insert_node(list1, data);
         break;
     case 2:
-        insert_node(list2);
+        printf("Enter the Element to be Inserted: ");
+        scanf("%d", &data);
+        insert_node(list2,data);
         break;
     case 3:
         printf("Linked List 1: \n");
@@ -163,8 +171,7 @@ int menu(Node **list1, Node **list2, Node **list3)
         break;
     case 5:
         printf("Combining Two Lists...\n");
-        *list3 = SortedMerge(*list1, *list2);
-        // joinList((*list1), (*list2), list3);
+        *list3 = combine(*list1, *list2);
         break;
     case 6:
         printf("Sorting Combined List....\n");

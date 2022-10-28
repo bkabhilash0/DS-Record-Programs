@@ -9,6 +9,7 @@
         "string": "c",
         "array": "c",
         "string_view": "c",
-        "ranges": "c"
+        "ranges": "c",
+        "queue": "c"
     }
 }
