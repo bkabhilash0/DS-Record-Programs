@@ -147,7 +147,7 @@ void determinant(int a[SIZE][SIZE])
 void main()
 {
     int matrix_1[SIZE][SIZE] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-    int matrix_2[SIZE][SIZE] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    int matrix_2[SIZE][SIZE] = {{3,-1, -2}, {0, 0, -1}, {3, -5, 0}};
 
     printf("The Matrices are\n");
     display(matrix_1);
@@ -167,5 +167,5 @@ void main()
     transpose(matrix_1);
     printf("-------------------\n");
     printf("Determinant is ");
-    printf("%d",determinantOfMatrix(matrix_1,SIZE));
+    printf("%d",determinantOfMatrix(matrix_2,SIZE));
 }

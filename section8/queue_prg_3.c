@@ -5,6 +5,7 @@ int queue[N];
 int front = -1;
 int rear = -1;
 
+// Double Ended Queue
 void enqueueRear(int ele)
 {
     if (rear == N - 1)

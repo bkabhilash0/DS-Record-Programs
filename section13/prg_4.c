@@ -155,32 +155,32 @@ int menu(Node **list1, Node **list2, Node **list3)
         printf("Enter the Element to be Inserted: ");
         scanf("%d", &data);
         insert_node(list1, data);
-        break;
+        return 1;
     case 2:
         printf("Enter the Element to be Inserted: ");
         scanf("%d", &data);
         insert_node(list2,data);
-        break;
+        return 1;
     case 3:
         printf("Linked List 1: \n");
         displayList(list1);
-        break;
+        return 1;
     case 4:
         printf("Linked List 2: \n");
         displayList(list2);
-        break;
+        return 1;
     case 5:
         printf("Combining Two Lists...\n");
         *list3 = combine(*list1, *list2);
-        break;
+        return 1;
     case 6:
         printf("Sorting Combined List....\n");
         *list3 = sortList(*list3);
-        break;
+        return 1;
     case 7:
         printf("Combined List is \n");
         displayList(list3);
-        break;
+        return 1;
     case 0:
         printf("Exiting.....");
         return 0;

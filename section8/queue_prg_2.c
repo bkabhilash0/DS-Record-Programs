@@ -1,6 +1,7 @@
 #include <stdio.h>
 #define N 5
 
+// Circular Queue
 int queue[N];
 int front = -1;
 int rear = -1;
